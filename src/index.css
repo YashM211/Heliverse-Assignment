@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #0e0f1b;
+    color: white;
+    font-family: 'Sora', sans-serif;
+    scroll-behavior: smooth;
+
+}
+
+.stylo-scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    cursor: pointer;
+    display: none;
+}
+
+body.rtl .stylo-scroll-top-btn{
+    right: auto;
+    left: 20px;
+}
+
+.stylo-scroll-top-btn > i {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: var(--stylo-main-color);
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 50px;
+    -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.stylo-scroll-top-btn > i > svg{
+    width: 12px;
+    fill: #fff;
+}
+
+.stylo-scroll-top-btn > i:hover {
+    opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height:1px;
+    scroll-margin-top: 30px;
+    position: absolute;
+    /* border-spacing: 2cm; */
+}
+
+::-webkit-scrollbar-track {
+    position: absolute;
+    top: 160px;
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-track {max-height: 50%; height: 50%;}
+
+::-webkit-scrollbar-thumb {
+    /* height: 200px; */
+    background: gray;
+    /* border-radius: 10px; */
+}
+
+
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: White;
+    background: #6219c0;
+}
+
+::selection {
+    color: White;
+    background: #6219c0;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('./fonts/Sora.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('./fonts/Outfit.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.hero-contaienr {
+    h1 {
+        font-size: clamp(35px, 6vw, 58px);
+        line-height: clamp(45px, 10vw, 78px);
+    }
+}
+
+.cursor-magic {
+    h2 {
+        font-size: clamp(25px, 6vw, 40px);
+        line-height: clamp(45px, 9vw, 60px);
+    }
+}
+
+.apply {
+    div {
+        >h2 {
+            font-size: clamp(25px, 6vw, 40px);
+            line-height: clamp(45px, 9vw, 60px);
+        }
+    }
+}
+
+.browser,
+.feature {
+    h2 {
+        font-size: clamp(20px, 3vw, 25px) !important;
+    }
+}
