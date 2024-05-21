@@ -133,6 +133,23 @@ function generateColor() {
   c.b *= 0.15;
   return c;
 }
+function hexToRgb(hex) {
+  // Remove the hash symbol if it's present
+  hex = hex.replace(/#/g, "");
+
+  // Ensure the hex string is the correct length
+  if (hex.length !== 6) {
+    throw new Error("Invalid hex color code");
+  }
+
+  // Convert each pair of hex digits to a base-10 number
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  // Return the RGB values as an object
+  return { r, g, b };
+}
 
 let _randomSplats = false;
 let _audioReact = false;
@@ -214,7 +231,7 @@ function livelyPropertyListener(name, val) {
       config.SUNRAYS_WEIGHT = val / 100;
       break;
     case "bgColor":
-      const tmp = hexToRgb(val);
+      var tmp = hexToRgb(val);
       config.BACK_COLOR.r = tmp.r;
       config.BACK_COLOR.g = tmp.g;
       config.BACK_COLOR.b = tmp.b;
@@ -243,16 +260,16 @@ function livelyPropertyListener(name, val) {
   }
 }
 
-function hexToRgb(hex) {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
-}
+// function hexToRgb(hex) {
+//   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+//   return result
+//     ? {
+//         r: parseInt(result[1], 16),
+//         g: parseInt(result[2], 16),
+//         b: parseInt(result[3], 16),
+//       }
+//     : null;
+// }
 
 function pointerPrototype() {
   this.id = -1;
@@ -1746,19 +1763,19 @@ function splatPointer(pointer) {
   splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
 }
 
-function multipleSplats(amount) {
-  for (let i = 0; i < amount; i++) {
-    const color = generateColor();
-    color.r *= 10.0;
-    color.g *= 10.0;
-    color.b *= 10.0;
-    const x = Math.random();
-    const y = Math.random();
-    const dx = 1000 * (Math.random() - 0.5);
-    const dy = 1000 * (Math.random() - 0.5);
-    splat(x, y, dx, dy, color);
-  }
-}
+// function multipleSplats(amount) {
+//   for (let i = 0; i < amount; i++) {
+//     const color = generateColor();
+//     color.r *= 10.0;
+//     color.g *= 10.0;
+//     color.b *= 10.0;
+//     const x = Math.random();
+//     const y = Math.random();
+//     const dx = 1000 * (Math.random() - 0.5);
+//     const dy = 1000 * (Math.random() - 0.5);
+//     splat(x, y, dx, dy, color);
+//   }
+// }
 
 function splat(x, y, dx, dy, color) {
   gl.viewport(0, 0, velocity.width, velocity.height);
@@ -1928,13 +1945,13 @@ function correctDeltaY(delta) {
   return delta;
 }
 
-function generateColor() {
-  let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-  c.r *= 0.15;
-  c.g *= 0.15;
-  c.b *= 0.15;
-  return c;
-}
+// function generateColor() {
+//   let c = HSVtoRGB(Math.random(), 1.0, 1.0);
+//   c.r *= 0.15;
+//   c.g *= 0.15;
+//   c.b *= 0.15;
+//   return c;
+// }
 
 function HSVtoRGB(h, s, v) {
   let r, g, b, i, f, p, q, t;
